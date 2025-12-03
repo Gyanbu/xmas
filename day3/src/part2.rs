@@ -10,7 +10,12 @@ pub fn solve(input: &Input) -> String {
         let mut previous_battery: isize = -1;
         for battery in chosen_batteries.iter_mut() {
             let mut highest_left_battery: (usize, u8) = (*battery, 0);
-            for i in (previous_battery + 1) as usize..=*battery {
+            for (i, _) in bank
+                .iter()
+                .enumerate()
+                .take(*battery + 1)
+                .skip((previous_battery + 1) as usize)
+            {
                 if bank[i] > highest_left_battery.1 {
                     highest_left_battery = (i, bank[i]);
                 }
