@@ -1,8 +1,6 @@
-pub mod part1;
-pub mod part2;
+pub type Input = Vec<i32>;
 
-pub fn parse_input() -> Vec<i32> {
-    let input = utils::read_input();
+pub fn parse(input: String) -> Input {
     input
         .lines()
         .map(|line| {
