@@ -5,8 +5,7 @@ use crate::common::Input;
 pub fn solve(input: &Input) -> String {
     let mut answer: u128 = 0;
     for bank in input {
-        let bank_length = bank.len();
-        let mut chosen_batteries: [usize; 12] = array::from_fn(|i| bank_length - 12 + i);
+        let mut chosen_batteries: [usize; 12] = array::from_fn(|i| bank.len() - 12 + i);
         let mut previous_battery: isize = -1;
         for battery in chosen_batteries.iter_mut() {
             let mut highest_left_battery: (usize, u8) = (*battery, 0);
