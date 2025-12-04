@@ -1,5 +1,8 @@
-pub type Input = ();
+pub type Input = Vec<Vec<bool>>;
 
 pub fn parse(input: String) -> Input {
-    todo!()
+    input
+        .lines()
+        .map(|row| row.chars().map(|c| c == '@').collect())
+        .collect()
 }
