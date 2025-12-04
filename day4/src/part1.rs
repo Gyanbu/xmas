@@ -14,20 +14,20 @@ pub fn solve(input: &Input) -> String {
     answer.to_string()
 }
 
-struct Diagram {
-    map: Input,
-    width: usize,
-    height: usize,
+pub struct Diagram {
+    pub map: Input,
+    pub width: usize,
+    pub height: usize,
 }
 
 impl Diagram {
-    fn new(map: Input) -> Self {
+    pub fn new(map: Input) -> Self {
         let width = map[0].len();
         let height = map.len();
         Self { map, width, height }
     }
 
-    fn print(&self) {
+    pub fn print(&self) {
         for row in &self.map {
             for roll in row {
                 if *roll {
@@ -40,11 +40,11 @@ impl Diagram {
         }
     }
 
-    fn get(&self, xy: (usize, usize)) -> bool {
-        self.map[xy.0][xy.1]
+    pub fn get(&self, xy: (usize, usize)) -> bool {
+        self.map[xy.1][xy.0]
     }
 
-    fn count_neighbors(&self, xy: (usize, usize)) -> u8 {
+    pub fn count_neighbors(&self, xy: (usize, usize)) -> u8 {
         const NEIGHBORS: &[(isize, isize)] = &[
             (0, -1),
             (1, -1),
