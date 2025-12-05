@@ -11,9 +11,8 @@ pub fn solve(input: &Input) -> String {
             continue;
         }
         if *range.start() <= furthest_index {
-            let offset = range.end() - furthest_index;
+            answer += (range.end() - furthest_index) as u128;
             furthest_index = *range.end();
-            answer += (range.count() - offset) as u128;
         } else {
             furthest_index = *range.end();
             answer += range.count() as u128;
