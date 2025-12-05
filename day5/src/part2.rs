@@ -2,7 +2,7 @@ use crate::common::Input;
 
 pub fn solve(input: &Input) -> String {
     let mut ranges = input.0.clone();
-    ranges.sort_by(|a, b| a.start().cmp(b.start()));
+    ranges.sort_by_key(|range| *range.start());
 
     let mut answer: u128 = 0;
     let mut furthest_index = 0;
