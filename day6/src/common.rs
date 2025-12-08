@@ -35,6 +35,7 @@ pub fn parse(input: String) -> Input {
     }
 }
 
+#[derive(Clone, Copy)]
 pub enum Operation {
     Add,
     Multiply,
