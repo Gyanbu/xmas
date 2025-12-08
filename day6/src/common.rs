@@ -1,4 +1,7 @@
-use std::fmt::{Debug, Display};
+use std::{
+    fmt::{Debug, Display},
+    ops::{Add, Mul},
+};
 
 pub type Input = Worksheet;
 
@@ -15,7 +18,7 @@ pub fn parse(input: String) -> Input {
         numbers.push(row);
     }
 
-    let mut operations: Vec<Operation> = input
+    let operations: Vec<Operation> = input
         .next()
         .unwrap()
         .split_whitespace()
@@ -53,7 +56,10 @@ impl Debug for Operation {
 }
 
 impl Operation {
-    pub fn calc(&self, a: usize, b: usize) -> usize {
+    pub fn calc<T>(&self, a: T, b: T) -> T
+    where
+        T: Add<Output = T> + Mul<Output = T> + Copy,
+    {
         match self {
             Operation::Add => a + b,
             Operation::Multiply => a * b,
